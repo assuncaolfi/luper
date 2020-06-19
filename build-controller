@@ -1,0 +1,22 @@
+#!bin/bash
+
+# TODO copy default mappings from alfaloop/patches/midi
+
+# cd midi-controller
+# mkdir libraries
+# cd libraries
+cd /home/pi/Arduino/libraries/
+git clone https://github.com/adafruit/Adafruit_BusIO
+git clone https://github.com/adafruit/Adafruit-GFX-Library
+git clone https://github.com/adafruit/Adafruit_SSD1306
+git clone https://github.com/PaulStoffregen/Encoder
+git clone https://github.com/tttapa/Control-Surface
+git clone https://github.com/arduino-libraries/MIDIUSB 
+cd /home/pi/looper/
+# cd ..
+# cd ..
+
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+bin/arduino-cli core install arduino:avr
+bin/arduino-cli compile --fqbn arduino:avr:micro midi-controller
+bin/arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:micro midi-controller 

@@ -1,0 +1,4 @@
+#!bin/bash
+
+sudo puredata -audioadddev 'USB Audio CODEC (hardware)' -mididev 1 -alsamidi -nogui /home/pi/looper/ALFALOOP_0.1.3/ALFALOOP.pd & sleep 2; sudo aconnect 'Arduino Micro':0 'Pure Data':0; sudo aconnect 'Pure Data':1 'Arduino Micro':0
+wait
